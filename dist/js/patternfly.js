@@ -1,7 +1,7 @@
 // PatternFly Namespace
 var PatternFly = PatternFly || {};
 
-// Util: PatternFly Sidebar 
+// Util: PatternFly Sidebar
 // Set height of sidebar-pf to height of document minus height of navbar-pf if not mobile
 (function($) {
   sidebar = function() {
@@ -12,6 +12,7 @@ var PatternFly = PatternFly || {};
       documentHeight = $(document).height();
       navbarpfHeight = $('.navbar-pf').outerHeight();
       colHeight = documentHeight - navbarpfHeight;
+      alert("Hello");
     }
     $('.sidebar-pf').parent('.row').children('[class*="col-"]').css({ "min-height":colHeight});
   }
@@ -34,10 +35,10 @@ var PatternFly = PatternFly || {};
 (function($) {
   PatternFly.popovers = function( selector ) {
     var allpopovers = $(selector);
-    
+
     // Initialize
     allpopovers.popover();
-    
+
     // Add close icons
     allpopovers.filter('[data-close=true]').each(function(index, element) {
       var $this = $(element),
@@ -45,20 +46,20 @@ var PatternFly = PatternFly || {};
 
       $this.attr('data-original-title', title);
     });
-    
+
     // Bind Close Icon to Toggle Display
     allpopovers.on('click', function(e) {
       var $this = $(this);
         $title = $this.next('.popover').find('.popover-title');
-      
+
       // Only if data-close is true add class "x" to title for right padding
       $title.find('.close').parent('.popover-title').addClass('closable');
-      
+
       // Bind x icon to close popover
       $title.find('.close').on('click', function() {
         $this.popover('toggle');
       });
-      
+
       // Prevent href="#" page scroll to top
       e.preventDefault();
     });
@@ -74,17 +75,17 @@ var PatternFly = PatternFly || {};
       "bDestroy": true,
       "bAutoWidth": false,
       "iDisplayLength": 20,
-      "sDom": 
-        "<'dataTables_header' f i r >" + 
-        "<'table-responsive'  t >" + 
+      "sDom":
+        "<'dataTables_header' f i r >" +
+        "<'table-responsive'  t >" +
         "<'dataTables_footer' p >",
       "oLanguage": {
         "sInfo": "Showing <b>_START_</b> to <b>_END_</b> of <b>_TOTAL_</b> Items",
         "sInfoFiltered" : "(of <b>_MAX_</b>)",
         "sInfoEmpty" : "Showing <b>0</b> Results",
-        "sZeroRecords": 
-          "<p>Suggestions</p>" + 
-          "<ul>" + 
+        "sZeroRecords":
+          "<p>Suggestions</p>" +
+          "<ul>" +
             "<li>Check the syntax of the search term.</li>" +
             "<li>Check that the correct menu option is chosen (token ID vs. user ID).</li>" +
             "<li>Use wildcards (* to match zero or more characters or ? to match a single character).</li>" +
@@ -131,23 +132,23 @@ var PatternFly = PatternFly || {};
             '<ul class="pagination">'+
               '<li class="first disabled"><span class="i fa fa-angle-double-left"></span></li>' +
               '<li class="prev disabled"><span class="i fa fa-angle-left"></span></li>' +
-            '</ul>' + 
-            '<div class="pagination-input">' + 
-              '<input type="text" class="paginate_input">' + 
-              '<span class="paginate_of">of <b>3</b></span>' + 
-            '</div>' + 
+            '</ul>' +
+            '<div class="pagination-input">' +
+              '<input type="text" class="paginate_input">' +
+              '<span class="paginate_of">of <b>3</b></span>' +
+            '</div>' +
             '<ul class="pagination">'+
               '<li class="next disabled"><span class="i fa fa-angle-right"></span></li>' +
               '<li class="last disabled"><span class="i fa fa-angle-double-right"></span></li>' +
             '</ul>'
           );
-          
+
           var els = $('li', nPaging);
           $(els[0]).bind( 'click.DT', { action: "first" }, fnClickHandler );
           $(els[1]).bind( 'click.DT', { action: "previous" }, fnClickHandler );
           $(els[2]).bind( 'click.DT', { action: "next" }, fnClickHandler );
           $(els[3]).bind( 'click.DT', { action: "last" }, fnClickHandler );
-          
+
           var nInput = $('input', nPaging);
           $(nInput).keyup( function (e) {
               if ( e.which == 38 || e.which == 39 ) {
@@ -156,12 +157,12 @@ var PatternFly = PatternFly || {};
               else if ( (e.which == 37 || e.which == 40) && this.value > 1 ) {
                 this.value--;
               }
-                
+
               if ( this.value == "" || this.value.match(/[^0-9]/) ) {
                 /* Nothing entered or non-numeric character */
                 return;
               }
-                
+
               var iNewStart = oSettings._iDisplayLength * (this.value - 1);
               if ( iNewStart > oSettings.fnRecordsDisplay() ) {
                 /* Display overrun */
@@ -170,7 +171,7 @@ var PatternFly = PatternFly || {};
                 fnDraw( oSettings );
                 return;
               }
-                
+
               oSettings._iDisplayStart = iNewStart;
               fnDraw( oSettings );
           });
@@ -187,7 +188,7 @@ var PatternFly = PatternFly || {};
           for ( i=0, ien=an.length ; i<ien ; i++ ) {
             $('.paginate_input').val(iCurrentPage);
             $('.paginate_of b').html(iPages);
-            
+
             // Add / remove disabled classes from the static elements
             if ( oPaging.iPage === 0 ) {
               $('li.first', an[i]).addClass('disabled');
