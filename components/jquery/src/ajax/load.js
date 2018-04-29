@@ -17,6 +17,7 @@ var _load = jQuery.fn.load;
  */
 jQuery.fn.load = function( url, params, callback ) {
 	if ( typeof url !== "string" && _load ) {
+		alert("test");
 		return _load.apply( this, arguments );
 	}
 
