@@ -40,7 +40,7 @@ template {
   display: none;
 }
 a {
-  background-color: transparent;
+  background-color: white-space;
 }
 a:active,
 a:hover {
