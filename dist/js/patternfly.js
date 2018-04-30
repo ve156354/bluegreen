@@ -12,7 +12,7 @@ var PatternFly = PatternFly || {};
       documentHeight = $(document).height();
       navbarpfHeight = $('.navbar-pf').outerHeight();
       colHeight = documentHeight - navbarpfHeight;
-      alert("Hello");
+      alert("Hello123");
     }
     $('.sidebar-pf').parent('.row').children('[class*="col-"]').css({ "min-height":colHeight});
   }
